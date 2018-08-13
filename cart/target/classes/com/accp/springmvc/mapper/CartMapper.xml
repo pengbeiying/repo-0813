@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "mybatis-3-mapper.dtd" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.springmvc.mapper.CartMapper">
+
+	<select id="selectCart" resultType="Cart">
+		SELECT * FROM Book b JOIN `Cart` c WHERE b.BookId=c.BookId;
+	</select>
+	
+	<insert id="addBook">
+		INSERT INTO `cartinfo`.`cart`
+            (`BookId`,
+             `Price`,
+             `Qty`)
+		VALUES (#{bookid},
+		        #{price},
+		        1);
+	</insert>
+	
+	<delete id="delBook">
+		DELETE FROM `cart` WHERE cartid=#{cartid};
+	</delete>
+	
+	<delete id="delAll">
+		DELETE FROM `cart`;
+	</delete>
+
+</mapper>
